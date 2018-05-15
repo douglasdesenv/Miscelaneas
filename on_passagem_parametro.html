@@ -1,0 +1,64 @@
+<html lang="pt-br">
+<head>
+  <style>
+
+    body {
+      background: #20262E;
+      padding: 20px;
+      font-family: Helvetica;
+    }
+
+    #banner-message {
+      background: #fff;
+      border-radius: 4px;
+      padding: 20px;
+      font-size: 25px;
+      text-align: center;
+      transition: all 0.2s;
+      margin: 0 auto;
+      width: 300px;
+    }
+
+    button {
+      background: #0084ff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 14px;
+      font-size: 15px;
+      color: #fff;
+    }
+  </style>
+
+  <script>
+
+    $(document).ready(function(){
+
+      $('#btn1').on("click", { texto: 'Usando a função do handler' } , escreve1);
+      $('#btn2').on("click", function() { escreve2('Usando o currying manual'); }); 
+      $('#btn3').on("click", jQuery.proxy(escreve3, this, 'Usando jQuery.proxy')); 
+
+  });
+
+    function escreve1(foo){
+      $("#banner-message p").text(foo.data.texto);
+    }
+
+    function escreve2(foo){
+      $("#banner-message p").text(foo);
+    }
+
+    function escreve3(foo){
+      $("#banner-message p").text(foo);
+    }
+
+  </script>
+</head>
+<body>
+  <div id="banner-message">
+    <p>Hello World</p>
+    <button id="btn1">Opção 1</button>
+    <button id="btn2">Opção 2</button>
+    <button id="btn3">Opção 3</button>
+  </div>
+</body>
+</html>
